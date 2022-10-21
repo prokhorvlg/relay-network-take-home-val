@@ -1,4 +1,4 @@
-import WardsMock from "../../data/WardsMockData";
+import { WardsMock } from "../../data/WardsMockData";
 import { ISegment } from "../../interfaces/VoterData";
 import { getSegmentByKey, getSegmentsFromWards, getTopSegmentFromSegments } from "./SegmentHelpers";
 

@@ -1,8 +1,8 @@
-import { IWard } from "../interfaces/VoterData";
+import { IGetVoterDataResponse, IWard } from "../interfaces/VoterData";
 
 // Contains a list of sample wards for use in unit testing.
 
-const WardsMock: IWard[] = [
+export const WardsMock: IWard[] = [
 	{
 		ward: "WD01",
 		dem: 2,
@@ -33,4 +33,8 @@ const WardsMock: IWard[] = [
 	}
 ]
 
-export default WardsMock
+export const mockGetVoterData: IGetVoterDataResponse = {
+	rows: WardsMock,
+	time: 1,
+	total_rows: 2
+}

@@ -17,7 +17,6 @@ const useVoterData = () => {
         setSegments(getSegmentsFromWards(wards))
         // Calculate top segment. (the segment with the largest total)
         setTopSegmentKey(getTopSegmentFromSegments(segments))
-        console.log(segments)
     }, [wards])
 
     return {

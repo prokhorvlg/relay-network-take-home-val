@@ -4,7 +4,7 @@ import { IGetVoterDataResponse } from "../interfaces/VoterData";
 import SummaryPanel from "./panels/SummaryPanel.component";
 import VoterDataPanel from "./panels/VoterDataPanel.component";
 
-const VOTER_DATA_ENDPOINT_URL: string = 
+export const VOTER_DATA_ENDPOINT_URL: string =
 	"https://phl.carto.com/api/v2/sql?q=SELECT+*+FROM+qualified_voter_listing_2018_primary_by_ward&filename=qualified_voter_listing_2018_primary_by_ward&format=json&skipfields=cartodb_id"
 
 enum AppState {
@@ -16,13 +16,14 @@ enum AppState {
 export const App = () => {
 	// Contains current state of app
 	const [loadingState, setLoadingState] = useState<AppState>(AppState.NotLoaded);
-
 	const {wards, segments, topSegmentKey, setWards} = useVoterData()
 
 	// On app load, load the data,
 	useEffect(() => {
 		fetch(VOTER_DATA_ENDPOINT_URL)
-			.then(response => response.json())
+			.then(response => {
+				return response.json()
+			})
 			.then(
 				(result: IGetVoterDataResponse) => {
 					// If the results are fetched correctly, set the data.
@@ -39,14 +40,14 @@ export const App = () => {
 
 	if (loadingState === AppState.NotLoaded) {
 		return (
-			<>
+			<div className="app-container" data-testid="app-container-notloaded">
 				Loading...
-			</>
+			</div>
 		)
 	}
 	else if (loadingState === AppState.Loaded) {
 		return (
-			<div className="app-container">
+			<div className="app-container" data-testid="app-container-loaded">
 				<SummaryPanel 
 					segments={segments}
 					topSegmentKey={topSegmentKey}
@@ -59,9 +60,9 @@ export const App = () => {
 	} 
 	else if (loadingState === AppState.Error) {
 		return (
-			<>
+			<div className="app-container" data-testid="app-container-error">
 				An error has occured while fetching the data.
-			</>
+			</div>
 		)
 	} else {
 		return null

@@ -18,9 +18,9 @@ const SummaryPanel = ({ segments, topSegmentKey }: SummaryPanelProps) => {
 	else {
 		return (
 			<div className="summary-panel">
-				<div>Top Segment of All Voters</div>
-				<div>{topSegment.name} - {topSegment.count}</div>
-				<div>{isTopSegmentCalculated ? topSegment.percentage * 100 : "0.00"}%</div>
+				<p>Top Segment of All Voters</p>
+				<h2>{topSegment.name} - {topSegment.count}</h2>
+				<p>{isTopSegmentCalculated ? topSegment.percentage : "0.00"}%</p>
 			</div>
 		)
 	}

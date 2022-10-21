@@ -1,25 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
+$font-heading: 'Roboto Slab', serif;
+$font-body: 'Open Sans', sans-serif;
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: $font-heading;
+	font-weight: 500;
+}
+
+p,
+input,
+button,
+li,
+a {
+	font-family: $font-body;
+	font-weight: 600;
+	letter-spacing: -0.01rem;
+}
+
+html,
+body,
+#root {
+	height: 100%;
+	overflow: hidden;
+}
+
 body {
+	margin: 0;
+	overflow: hidden;
+}
+
+.app-container {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
 
 }
 
 .summary-panel {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 
+	height: 100vh;
+	padding: 0 50px 0 50px;
 }
 
 .voter-data-panel {
-    display: flex;
-    flex-direction: column;
-    .voter-data-headers, .voter-data-row-item {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        
-    }
-    .col-element {
-        width: 50px;
-    }
-    .voter-data-list {
-        display: flex;
-        flex-direction: column;
-    }
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	flex: 1;
+	height: 100vh;
+	margin: 10px 10px 10px 0;
+
+	.voter-data-headers,
+	.voter-data-row-item {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		padding-left: 10px;
+		padding-right: 10px;
+		div {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+		}
+	}
+
+	.voter-data-headers {
+		background-color: rgba(0,0,0,0.9);
+		border-radius: 10px;
+		margin-right: 20px;
+		h3 {
+			color: white;
+			font-size: 1rem;
+		}
+	}
+
+	.voter-data-row-item:nth-child(2n) {
+		background-color: rgba(0, 0, 0, 0.05);
+		border-radius: 10px;
+	}
+
+	.col-element {
+		width: 50px;
+	}
+
+	.voter-data-list {
+		display: flex;
+		flex-direction: column;
+		max-height: 100%;
+		overflow-y: scroll;
+		margin-bottom: 20px;
+	}
 }

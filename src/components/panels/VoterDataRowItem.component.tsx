@@ -1,4 +1,5 @@
 import { IWard } from "../../interfaces/VoterData";
+import VoterDataColumnItem from "./VoterDataColumnItem.component";
 
 interface VoterDataRowItemProps {
     ward: IWard
@@ -7,19 +8,19 @@ interface VoterDataRowItemProps {
 const VoterDataRowItem = ({ ward }: VoterDataRowItemProps) => {
 	return (
 		<div className="voter-data-row-item">
-			<div className="col-element">{ward.ward}</div>
-            <div className="col-element">{ward.rep}</div>
-            <div className="col-element">{ward.dem}</div>
-            <div className="col-element">{ward.other_party}</div>
-            <div className="col-element">{ward.male}</div>
-            <div className="col-element">{ward.female}</div>
-            <div className="col-element">{ward.unknown_sex}</div>
-            <div className="col-element">{ward.black}</div>
-            <div className="col-element">{ward.hispanic}</div>
-            <div className="col-element">{ward.white}</div>
-            <div className="col-element">{ward.other_race}</div>
-            <div className="col-element">{ward.total}</div>
-            <div className="col-element">%</div>
+            <VoterDataColumnItem text={ward.ward} />
+            <VoterDataColumnItem text={ward.rep} />
+            <VoterDataColumnItem text={ward.dem} />
+            <VoterDataColumnItem text={ward.other_party} />
+            <VoterDataColumnItem text={ward.male} />
+            <VoterDataColumnItem text={ward.female} />
+            <VoterDataColumnItem text={ward.unknown_sex} />
+            <VoterDataColumnItem text={ward.black} />
+            <VoterDataColumnItem text={ward.hispanic} />
+            <VoterDataColumnItem text={ward.white} />
+            <VoterDataColumnItem text={ward.other_race} />
+            <VoterDataColumnItem text={ward.total} />
+            <VoterDataColumnItem text="%" />
 		</div>
 	)
 }

@@ -4,8 +4,8 @@ interface VoterDataHeaderItemProps {
 
 const VoterDataHeaderItem = ({ text }: VoterDataHeaderItemProps) => {
 	return (
-		<div className="voter-data-header-item">
-			<span>{text}</span>
+		<div className="col-element">
+			<h3>{text}</h3>
 		</div>
 	)
 }

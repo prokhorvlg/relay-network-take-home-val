@@ -1,29 +1,32 @@
-import { useState } from "react";
-import { IWard } from "../interfaces/VoterData";
+import { useEffect, useState } from "react";
+import { getSegmentsFromWards, getTopSegmentFromSegments } from "../components/helpers/SegmentHelpers";
+import { ISegment, IWard } from "../interfaces/VoterData";
 
 // useVoterData.ts
 // Contains hook that handles all data and functionality related to voter data.
 
 const useVoterData = () => {
-    // Contains current ward data.
-    const [wards, setWards] = useState<IWard[]>([]);
+    // Contains data pertaining to voter information.
+    const [wards, setWards] = useState<IWard[]>([])
+    const [segments, setSegments] = useState<ISegment[]>([])
+    const [topSegmentKey, setTopSegmentKey] = useState<string>()
 
-    // Adds given wards to store.
-    const addWards = (addedWards: IWard[]): void => {
-        setWards(wards  => [...wards, ...addedWards])
-        // TODO: If this were a two-way app, this is where the post call would go.
-    }
+    // Whenever wards are updated...
+    useEffect(() => {
+        // Calculate new segment totals and percentages.
+        setSegments(getSegmentsFromWards(wards))
+        // Calculate top segment. (the segment with the largest total)
+        setTopSegmentKey(getTopSegmentFromSegments(segments))
+    }, [wards])
 
-    const loadWardsFromEndpoint = (): void => {
-        // TODO: Call endpoint to get wards
-    }
-
-    return [
+    return {
         // store
         wards,
+        segments,
+        topSegmentKey,
         // actions
-        addWards
-    ]
+        setWards
+    }
 }
 
 export default useVoterData

@@ -1,7 +1,8 @@
 import { ISegment, IWard } from "../../interfaces/VoterData";
 
+// Given wards, return new segments by aggregating ward data.
 export const getSegmentsFromWards = (wards: IWard[]): ISegment[] => {
-    // Create dictionary to contain ward data.
+    // Create dictionary to contain data.
     let segments: ISegment[] = [
         {
             key: "rep",
@@ -70,7 +71,7 @@ export const getSegmentsFromWards = (wards: IWard[]): ISegment[] => {
     if (totalSegment) {
         segments.forEach((segment) => {
             if (segment.count && totalSegment.count) {
-                segment.percentage = segment.count / totalSegment.count
+                segment.percentage = (segment.count / totalSegment.count) * 100
             }
         })
     }
@@ -78,10 +79,12 @@ export const getSegmentsFromWards = (wards: IWard[]): ISegment[] => {
     return segments
 }
 
+// Given segments, return a segment matching key.
 export const getSegmentByKey = (key: string, segments: ISegment[]): ISegment | undefined => {
     return segments.find((segment) => segment.key === key)
 }
 
+// Given segments, return the key of top segment (segment with the highest count).
 export const getTopSegmentFromSegments = (segments: ISegment[]): string => {
     let currentTopSegment = ""
     let currentTopCount = -1

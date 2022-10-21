@@ -1,8 +1,13 @@
 import { VoterDataHeaders } from "../../data/VoterDataHeaders";
-import { IVoterDataHeader } from "../../interfaces/VoterData";
+import { IVoterDataHeader, IWard } from "../../interfaces/VoterData";
 import VoterDataHeaderItem from "./VoterDataHeaderItem.component";
+import VoterDataRowItem from "./VoterDataRowItem.component";
 
-const VoterDataPanel = () => {
+interface VoterDataPanelProps {
+	wards: IWard[]
+}
+
+const VoterDataPanel = ({ wards }: VoterDataPanelProps) => {
 	return (
 		<div className="voter-data-panel">
 			<div className="voter-data-headers">
@@ -13,7 +18,11 @@ const VoterDataPanel = () => {
 				)}
 			</div>
 			<div className="voter-data-list">
-				TODO: List data from store here
+				{wards.map((ward: IWard) => 
+					<VoterDataRowItem 
+						ward={ward}
+					/>
+				)}
 			</div>
 			<div className="voter-data-footer">
 

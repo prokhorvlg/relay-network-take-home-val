@@ -48,7 +48,9 @@ export const App = () => {
 		return (
 			<div className="app-container">
 				<SummaryPanel />
-				<VoterDataPanel />
+				<VoterDataPanel 
+					wards={wards}
+				/>
 			</div>
 		)
 	} 

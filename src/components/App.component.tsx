@@ -58,6 +58,8 @@ export const App = () => {
 				An error has occured while fetching the data.
 			</>
 		)
+	} else {
+		return null
 	}
 }
 

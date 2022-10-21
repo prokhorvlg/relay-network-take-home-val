@@ -10,7 +10,7 @@ const useVoterData = () => {
 
     // Adds given wards to store.
     const addWards = (addedWards: IWard[]): void => {
-        setWards(wards  => [...wards, ...addedWards])
+        setWards(wards => [...wards, ...addedWards])
         // TODO: If this were a two-way app, this is where the post call would go.
     }
 
@@ -18,12 +18,12 @@ const useVoterData = () => {
         // TODO: Call endpoint to get wards
     }
 
-    return [
+    return {
         // store
         wards,
         // actions
-        addWards
-    ]
+        setWards
+    }
 }
 
 export default useVoterData

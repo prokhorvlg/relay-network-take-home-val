@@ -12,4 +12,4 @@ const VoterDataRowItem = ({ ward }: VoterDataRowItemProps) => {
 	)
 }
 
-export default VoterDataRowItem;
+export default VoterDataRowItem

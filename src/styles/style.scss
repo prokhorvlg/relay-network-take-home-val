@@ -1,0 +1,21 @@
+body {
+
+}
+
+.summary-panel {
+    
+}
+
+.voter-data-panel {
+    display: flex;
+    flex-direction: column;
+    .voter-data-headers, .voter-data-row-item {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    .voter-data-list {
+        display: flex;
+        flex-direction: column;
+    }
+}

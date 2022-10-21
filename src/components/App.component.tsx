@@ -17,7 +17,7 @@ export const App = () => {
 	// Contains current state of app
 	const [loadingState, setLoadingState] = useState<AppState>(AppState.NotLoaded);
 
-	const {wards, setWards} = useVoterData()
+	const {wards, segments, topSegmentKey, setWards} = useVoterData()
 
 	// On app load, load the data,
 	useEffect(() => {
@@ -47,7 +47,10 @@ export const App = () => {
 	else if (loadingState === AppState.Loaded) {
 		return (
 			<div className="app-container">
-				<SummaryPanel />
+				<SummaryPanel 
+					segments={segments}
+					topSegmentKey={topSegmentKey}
+				/>
 				<VoterDataPanel 
 					wards={wards}
 				/>

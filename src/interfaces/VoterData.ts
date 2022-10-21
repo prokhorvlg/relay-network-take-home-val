@@ -9,6 +9,11 @@ export interface IGetVoterDataResponse {
     total_rows: number
 }
 
+export interface IVoterDataHeader {
+    text: string
+    emphasized?: boolean
+}
+
 export interface IWard {
     ward: string
     dem: number
@@ -24,7 +29,10 @@ export interface IWard {
     unknown_sex: number
 }
 
-export interface IVoterDataHeader {
-    text: string
-    emphasized?: boolean
+
+export interface ISegment {
+    key: string
+    name: string
+    count?: number
+    percentage?: number
 }

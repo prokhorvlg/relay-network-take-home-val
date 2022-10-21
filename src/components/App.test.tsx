@@ -13,7 +13,7 @@ describe('App', () => {
 	test('displays loading text at start', () => {
 		expect(screen.getByTestId("app-container-notloaded")).toBeInTheDocument
 	})
-	test('displays loaded container after fetch', async () => {
+	test('displays loaded container after successful fetch request', async () => {
 		await act(async () => {
 			render(<App />);
 		})

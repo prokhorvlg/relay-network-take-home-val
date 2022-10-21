@@ -17,10 +17,10 @@ const SummaryPanel = ({ segments, topSegmentKey }: SummaryPanelProps) => {
 	if (!isTopSegmentCalculated || !topSegment.percentage) return null
 	else {
 		return (
-			<div className="summary-panel">
+			<div className="summary-panel" data-testid="summary-panel">
 				<p>Top Segment of All Voters</p>
 				<h2>{topSegment.name} - {topSegment.count}</h2>
-				<p>{isTopSegmentCalculated ? topSegment.percentage : "0.00"}%</p>
+				<p>{isTopSegmentCalculated ? topSegment.percentage.toFixed(2) : "0.00"}%</p>
 			</div>
 		)
 	}

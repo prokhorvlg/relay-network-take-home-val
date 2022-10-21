@@ -1,11 +1,11 @@
-import { WardsMock } from "../../data/WardsMockData";
+import { mockWards } from "../../data/WardsMockData";
 import { ISegment } from "../../interfaces/VoterData";
 import { getSegmentByKey, getSegmentsFromWards, getTopSegmentFromSegments } from "./SegmentHelpers";
 
 describe('getSegmentsFromWards', () => {
 	let segments: ISegment[], totalSegment: ISegment | undefined
-	beforeEach(() => {
-		segments = getSegmentsFromWards(WardsMock)
+	beforeAll(() => {
+		segments = getSegmentsFromWards(mockWards)
 		totalSegment = getSegmentByKey("total", segments)
 	})
 
@@ -28,8 +28,8 @@ describe('getSegmentsFromWards', () => {
 
 describe('getSegmentByKey', () => {
 	let segments: ISegment[]
-	beforeEach(() => {
-		segments = getSegmentsFromWards(WardsMock)
+	beforeAll(() => {
+		segments = getSegmentsFromWards(mockWards)
 	})
 
 	test('returns an expected object', () => {
@@ -44,8 +44,8 @@ describe('getSegmentByKey', () => {
 
 describe('getTopSegmentFromSegments', () => {
 	let segments: ISegment[]
-	beforeEach(() => {
-		segments = getSegmentsFromWards(WardsMock)
+	beforeAll(() => {
+		segments = getSegmentsFromWards(mockWards)
 	})
 
 	test('returns the expected top segment key', () => {

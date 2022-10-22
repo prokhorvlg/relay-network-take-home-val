@@ -9,8 +9,11 @@ import { IDropdownOption, ISegment, IWard } from "../interfaces/VoterData";
 const useVoterData = () => {
     // Contains data pertaining to voter information.
     const [wards, setWards] = useState<IWard[]>([])
+    // Contains the aggregate for each segment of voters.
     const [segments, setSegments] = useState<ISegment[]>([])
+    // Contains a key referring to the top segment of voters.
     const [topSegmentKey, setTopSegmentKey] = useState<string>()
+    // Contains the current state of the selected segment.
     const [selectedSegment, setSelectedSegment] = useState<IDropdownOption>()
 
     // Whenever wards are changed...

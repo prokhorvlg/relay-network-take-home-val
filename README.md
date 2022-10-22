@@ -11,6 +11,7 @@ This repository contains the project:
 ## History
 
 To view the git commit history for this repository, use the command `git log`.
+
 For a minified version, use `git log --pretty="%h - %s"`.
 
 You can also view the [GitHub commit log](https://github.com/prokhorvlg/relay-network-take-home-val/commits/main).
@@ -53,3 +54,15 @@ Before starting, clone the repository using `git clone https://github.com/prokho
 * Highlight the column that is currently selected.
 * Allow user to filter by column by simply selecting the column itself.
 * Responsive design, so the table can be usable on a mobile device.
+
+# Mistakes
+
+When designing the app initially, I did not notice the totals row provided with the data, so I implemented the total calculations myself. 
+
+In my opinion, this was caused primarily by these issues:
+
+* The lack of an interface provided with the endpoint.
+* The endpoint's design is unconventional. From my experience, special pieces of information are often provided seperately within the interface.
+* I did not examine each row carefully enough.
+
+Ultimately, I decided to stick with my logic as I felt confident with it and did not want to spend time refactoring. Instead, I simply filtered out the totals row.

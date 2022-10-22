@@ -9,11 +9,6 @@ export interface IGetVoterDataResponse {
     total_rows: number
 }
 
-export interface IVoterDataHeader {
-    text: string
-    emphasized?: boolean
-}
-
 export interface IWard {
     ward: string
     dem: number
@@ -36,6 +31,9 @@ export interface ISegment {
     name: string
     count?: number
     percentage?: number
+    ignoreForCount?: boolean            // Ignore this segment when counting totals
+    ignoreForPercent?: boolean          // Ignore this segment when calculating percentage
+    ignoreForTop?: boolean              // Ignore this segment when calculating top segment
 }
 
 export interface IDropdownOption {

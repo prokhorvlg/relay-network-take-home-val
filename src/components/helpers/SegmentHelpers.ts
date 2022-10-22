@@ -5,6 +5,13 @@ export const getSegmentsFromWards = (wards: IWard[]): ISegment[] => {
     // Create dictionary to contain data.
     let segments: ISegment[] = [
         {
+            key: "ward",
+            name: "Ward",
+            ignoreForCount: true,
+            ignoreForPercent: true,
+            ignoreForTop: true
+        },
+        {
             key: "rep",
             name: "Republican"
         },
@@ -47,7 +54,16 @@ export const getSegmentsFromWards = (wards: IWard[]): ISegment[] => {
         {
             key: "total",
             name: "Total",
-            percentage: 100.00
+            percentage: 100.00,
+            ignoreForPercent: true,
+            ignoreForTop: true
+        },
+        {
+            key: "percentage",
+            name: "%",
+            ignoreForCount: true,
+            ignoreForPercent: true,
+            ignoreForTop: true
         }
     ]
 
@@ -55,12 +71,14 @@ export const getSegmentsFromWards = (wards: IWard[]): ISegment[] => {
     // Cycle through each ward and aggregate the total counts for each segment.
     wards.forEach((ward) => {
         segments.forEach((segment) => {
-            const wardValue = ward[segment.key as keyof IWard] as number
-            // Add to the total count for that segment
-            if (segment.count) {
-                segment.count = segment.count + wardValue
-            } else {
-                segment.count = wardValue
+            if (!segment.ignoreForCount) {
+                const wardValue = ward[segment.key as keyof IWard] as number
+                // Add to the total count for that segment
+                if (segment.count) {
+                    segment.count = segment.count + wardValue
+                } else {
+                    segment.count = wardValue
+                }
             }
         })
     })
@@ -70,7 +88,7 @@ export const getSegmentsFromWards = (wards: IWard[]): ISegment[] => {
     // Calculate percentages based on relation to total segment count
     if (totalSegment) {
         segments.forEach((segment) => {
-            if (segment.count && totalSegment.count) {
+            if (!segment.ignoreForPercent && segment.count && totalSegment.count) {
                 segment.percentage = (segment.count / totalSegment.count) * 100
             }
         })
@@ -90,7 +108,7 @@ export const getTopSegmentFromSegments = (segments: ISegment[]): string => {
     let currentTopCount = -1
     // For each segment, oust the top if its count is higher
     segments.forEach((segment) => {
-        if (segment.count && segment.key !== "total") {
+        if (!segment.ignoreForTop && segment.count) {
             if (currentTopSegment === "") {
                 // If this just started, set this as the top segment
                 currentTopSegment = segment.key

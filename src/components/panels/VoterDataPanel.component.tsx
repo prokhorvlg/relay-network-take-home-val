@@ -1,21 +1,20 @@
-import { VoterDataHeaders } from "../../data/VoterDataHeaders";
-import { IVoterDataHeader, IWard } from "../../interfaces/VoterData";
-import VoterDataHeaderItem from "./VoterDataHeaderItem.component";
+import { ISegment, IWard } from "../../interfaces/VoterData";
+import { formatNumberWithCommas } from "../helpers/SegmentHelpers";
 import VoterDataRowItem from "./VoterDataRowItem.component";
 
 interface VoterDataPanelProps {
 	wards: IWard[]
+	segments: ISegment[]
 }
 
-const VoterDataPanel = ({ wards }: VoterDataPanelProps) => {
+const VoterDataPanel = ({ wards, segments }: VoterDataPanelProps) => {
 	return (
 		<div className="voter-data-panel">
 			<div className="voter-data-headers">
-				{VoterDataHeaders.map((headerData: IVoterDataHeader) =>
-					<VoterDataHeaderItem
-						key={headerData.text}
-						text={headerData.text}
-					/>
+				{segments.map((segment: ISegment) =>
+					<div className="col-element" key={segment.key}>
+						<h3>{segment.name}</h3>
+					</div>
 				)}
 			</div>
 			<div className="voter-data-list">
@@ -24,6 +23,13 @@ const VoterDataPanel = ({ wards }: VoterDataPanelProps) => {
 						key={ward.ward}
 						ward={ward}
 					/>
+				)}
+			</div>
+			<div className="voter-data-totals">
+				{segments.map((segment: ISegment) =>
+					<div className="col-element" key={segment.key}>
+						<h3>{formatNumberWithCommas(segment.count || "-")}</h3>
+					</div>
 				)}
 			</div>
 		</div>

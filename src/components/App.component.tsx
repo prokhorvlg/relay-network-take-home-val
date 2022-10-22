@@ -26,9 +26,15 @@ export const App = () => {
 			})
 			.then(
 				(result: IGetVoterDataResponse) => {
-					// If the results are fetched correctly, set the data.
 					// In a fully-fledged app, this would likely be done by an action in a store like Redux.
-					setWards(result.rows)
+
+					// Filter out the "totals" row. (explained in readme's 'mistakes' section)
+					const rows = result.rows.filter((row) => {
+						return row.ward !== "Totals:"
+					})
+
+					// Set the state.
+					setWards(rows)
 					setLoadingState(AppState.Loaded)
 				},
 				(error) => {
@@ -60,6 +66,7 @@ export const App = () => {
 					/>
 					<VoterDataPanel
 						wards={wards}
+						segments={segments}
 					/>
 				</div>
 			</div>

@@ -16,7 +16,7 @@ const VoterDataPanel = ({ wards, segments, selectedSegment }: VoterDataPanelProp
 					const isSameAsSelected = selectedSegment?.value === segment.key
 					return (
 						<div
-							className={"col-element " + (isSameAsSelected ? "emphasized" : "")}
+							className={"col-element " + (isSameAsSelected ? "selected" : "")}
 							key={segment.key}
 						>
 							<h3>{segment.name}</h3>
@@ -29,6 +29,8 @@ const VoterDataPanel = ({ wards, segments, selectedSegment }: VoterDataPanelProp
 					<VoterDataRowItem
 						key={ward.ward}
 						ward={ward}
+						segments={segments}
+						selectedSegment={selectedSegment}
 					/>
 				)}
 			</div>
@@ -37,7 +39,7 @@ const VoterDataPanel = ({ wards, segments, selectedSegment }: VoterDataPanelProp
 					const isSameAsSelected = selectedSegment?.value === segment.key
 					return (
 						<div
-							className={"col-element " + (isSameAsSelected ? "emphasized" : "")}
+							className={"col-element " + (isSameAsSelected ? "selected" : "")}
 							key={segment.key}
 						>
 							<h3>{formatNumberWithCommas(segment.count || "-")}</h3>

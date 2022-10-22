@@ -5,6 +5,7 @@ $font-heading: 'Roboto Slab', serif;
 $font-body: 'Open Sans', sans-serif;
 
 $selected-color: #ffd909;
+$selected-color-2: #ff7800;
 
 h1,
 h2,
@@ -167,7 +168,7 @@ body,
 		.col-element {
 			width: 100px;
 
-			&.emphasized {
+			&.selected {
 				background-color: $selected-color;
 
 				h3 {
@@ -186,8 +187,13 @@ body,
 		.col-element {
 			width: 100px;
 
-			&.selected {
+			&.highlighted {
 				background-color: $selected-color;
+			}
+
+			&.selected {
+				background-color: rgba(0, 0, 0, 0.9);
+				color: $selected-color;
 			}
 		}
 	}

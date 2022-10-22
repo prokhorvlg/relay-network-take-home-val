@@ -31,6 +31,7 @@ export interface ISegment {
     name: string
     count?: number
     percentage?: number
+    selected?: boolean                  // Whether this segment is currently selected
     ignoreForCount?: boolean            // Ignore this segment when counting totals
     ignoreForPercent?: boolean          // Ignore this segment when calculating percentage
     ignoreForTop?: boolean              // Ignore this segment when calculating top segment

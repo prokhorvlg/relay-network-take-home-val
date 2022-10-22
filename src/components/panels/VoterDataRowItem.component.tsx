@@ -1,28 +1,43 @@
-import { IWard } from "../../interfaces/VoterData";
+import { IDropdownOption, ISegment, IWard } from "../../interfaces/VoterData";
 import VoterDataColumnItem from "./VoterDataColumnItem.component";
 
 interface VoterDataRowItemProps {
-    ward: IWard
+	ward: IWard
+	segments: ISegment[]
+	selectedSegment?: IDropdownOption
 }
 
-const VoterDataRowItem = ({ ward }: VoterDataRowItemProps) => {
-    return (
-        <div className="voter-data-row-item">
-            <VoterDataColumnItem text={ward.ward} />
-            <VoterDataColumnItem text={ward.rep} />
-            <VoterDataColumnItem text={ward.dem} />
-            <VoterDataColumnItem text={ward.other_party} />
-            <VoterDataColumnItem text={ward.male} />
-            <VoterDataColumnItem text={ward.female} />
-            <VoterDataColumnItem text={ward.unknown_sex} />
-            <VoterDataColumnItem text={ward.black} />
-            <VoterDataColumnItem text={ward.hispanic} />
-            <VoterDataColumnItem text={ward.white} />
-            <VoterDataColumnItem text={ward.other_race} />
-            <VoterDataColumnItem text={ward.total} />
-            <VoterDataColumnItem text={ward.percentage ? ward.percentage.toFixed(2) + "%" : "-"} selected={ward.percentage ? true : false} />
-        </div>
-    )
+const VoterDataRowItem = ({ ward, segments, selectedSegment }: VoterDataRowItemProps) => {
+	return (
+		<div className="voter-data-row-item">
+			{segments.map((segment: ISegment) => {
+				let text: string
+				let highlighted: boolean
+				let selected: boolean = segment.key === (selectedSegment?.value || "")
+
+				if (segment.key === "percentage") {
+					if (ward.percentage) {
+						text = ward.percentage.toFixed(2) + "%"
+						highlighted = true
+					} else {
+						text = "-"
+						highlighted = false
+					}
+				} else {
+					text = ward[segment.key as keyof IWard] as string || ""
+					highlighted = false
+				}
+				return (
+					<VoterDataColumnItem
+						key={segment.key}
+						text={text}
+						highlighted={highlighted}
+						selected={selected}
+					/>
+				)
+			})}
+		</div>
+	)
 }
 
 export default VoterDataRowItem

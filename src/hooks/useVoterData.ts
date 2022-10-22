@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import App, { AppState } from "../components/App.component";
-import { getSegmentsFromWards, getTopSegmentFromSegments } from "../components/helpers/SegmentHelpers";
+import { getSegmentByKey, getSegmentsFromWards, getTopSegmentFromSegments } from "../components/helpers/SegmentHelpers";
 import { IDropdownOption, ISegment, IWard } from "../interfaces/VoterData";
 
 // useVoterData.ts
@@ -28,9 +28,10 @@ const useVoterData = () => {
 
     // Whenever the selected segment is updated...
     useEffect(() => {
+        // Calculate percentages for each ward.
         if (selectedSegment) {
             const selectedKey = selectedSegment.value as keyof IWard || "total"
-            // Calculate percentages for each ward
+
             const newWards = wards.map((ward) => {
                 return {
                     ...ward,

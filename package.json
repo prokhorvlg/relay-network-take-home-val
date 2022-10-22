@@ -14,13 +14,14 @@
     "react-scripts": "5.0.1",
     "react-select": "^5.5.4",
     "sass": "^1.55.0",
+    "ts-jest": "^29.0.3",
     "typescript": "^4.8.4",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -43,6 +44,16 @@
   },
   "devDependencies": {
     "@testing-library/react": "^13.4.0",
+    "jest-environment-jsdom": "^29.2.1",
     "jest-fetch-mock": "^3.0.3"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.(ts|tsx|js|jsx)$": "ts-jest"
+    },
+    "testEnvironment": "jsdom",
+    "setupFilesAfterEnv": [
+      "<rootDir>/src/setupTests.ts"
+    ]
   }
 }

@@ -92,7 +92,6 @@ body,
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		margin-bottom: 80px;
 		flex: 1;
 		width: 300px;
 
@@ -120,6 +119,13 @@ body,
 				background-color: $selected-color;
 			}
 		}
+	}
+
+	.footer {
+		width: 100%;
+		text-align: center;
+		height: 50px;
+		color: $selected-color;
 	}
 }
 

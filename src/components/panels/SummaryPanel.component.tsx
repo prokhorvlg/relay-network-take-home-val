@@ -52,6 +52,9 @@ const SummaryPanel = ({ segments, topSegmentKey, selectedSegment, setSelectedSeg
 					text={detailsText}
 					selected={detailsSelected}
 				/>
+				<div className="footer">
+					{detailsSelected ? <p>Selection Active</p> : ""}
+				</div>
 			</div>
 		)
 	}

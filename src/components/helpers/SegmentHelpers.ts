@@ -11,7 +11,7 @@ export const getSegmentsFromWards = (wards: IWard[]): ISegment[] => {
     wards.forEach((ward) => {
         segments.forEach((segment) => {
             if (!segment.ignoreForCount) {
-                const wardValue = ward[segment.key as keyof IWard] as number
+                const wardValue = ward[segment.key] as number
                 // Add to the total count for that segment
                 if (segment.count) {
                     segment.count = segment.count + wardValue

@@ -1,6 +1,22 @@
 // VoterData.ts
 // Contains all interfaces pertaining to voter data.
 
+export enum SegmentKey {
+    Ward = "ward",
+    Democrat = "dem",
+    Republican = "rep",
+    OtherParty = "other_party",
+    Total = "total",
+    White = "white",
+    Black = "black",
+    Hispanic = "hispanic",
+    OtherRace = "other_race",
+    Male = "male",
+    Female = "female",
+    UnknownSex = "unknown_sex",
+    Percentage = "percentage"
+}
+
 export interface IGetVoterDataRequest { }
 
 export interface IGetVoterDataResponse {
@@ -27,7 +43,7 @@ export interface IWard {
 
 
 export interface ISegment {
-    key: string
+    key: SegmentKey
     name: string
     count?: number
     percentage?: number
@@ -39,6 +55,6 @@ export interface ISegment {
 }
 
 export interface IDropdownOption {
-    value: string
+    value: SegmentKey
     label: string
 }

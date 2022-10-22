@@ -24,7 +24,7 @@ const VoterDataRowItem = ({ ward, segments, selectedSegment }: VoterDataRowItemP
 						highlighted = false
 					}
 				} else {
-					text = ward[segment.key as keyof IWard] as string || ""
+					text = ward[segment.key] as string || ""
 					highlighted = false
 				}
 				return (

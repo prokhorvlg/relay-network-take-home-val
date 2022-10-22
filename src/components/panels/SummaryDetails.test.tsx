@@ -1,11 +1,11 @@
 import { render, screen } from '@testing-library/react'
-import { ISegment } from '../../interfaces/VoterData';
+import { ISegment, SegmentKey } from '../../interfaces/VoterData';
 import SummaryDetails from './SummaryDetails.component';
 
 describe('SummaryDetails', () => {
     const text = "Test Text"
     const segment: ISegment = {
-        key: "testKey",
+        key: SegmentKey.Black,
         name: "testText",
         count: 52000,
         percentage: 95.12345

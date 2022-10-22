@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import { baseSegments } from '../../data/BaseSegments';
 import { mockWards } from '../../data/WardsMockData';
-import { IDropdownOption } from '../../interfaces/VoterData';
+import { IDropdownOption, SegmentKey } from '../../interfaces/VoterData';
 import { getSegmentByKey } from '../helpers/SegmentHelpers';
 import VoterDataPanel from './VoterDataPanel.component';
 
@@ -9,7 +9,7 @@ describe('VoterDataPanel', () => {
     const wards = mockWards
     const segments = baseSegments
     const selectedSegment: IDropdownOption = {
-        value: "female",
+        value: SegmentKey.Female,
         label: "Female"
     }
 

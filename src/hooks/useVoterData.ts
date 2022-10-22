@@ -29,7 +29,7 @@ const useVoterData = () => {
     useEffect(() => {
         // Calculate percentages for each ward.
         if (selectedSegment) {
-            const selectedKey = selectedSegment.value as keyof IWard || "total"
+            const selectedKey = selectedSegment.value || "total"
 
             const newWards = wards.map((ward) => {
                 return {

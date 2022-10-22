@@ -1,8 +1,8 @@
-import { ISegment } from "../interfaces/VoterData";
+import { ISegment, SegmentKey } from "../interfaces/VoterData";
 
 export const baseSegments: ISegment[] = [
     {
-        key: "ward",
+        key: SegmentKey.Ward,
         name: "Ward",
         ignoreForCount: true,
         ignoreForPercent: true,
@@ -10,54 +10,54 @@ export const baseSegments: ISegment[] = [
         ignoreForDropdown: true
     },
     {
-        key: "rep",
+        key: SegmentKey.Republican,
         name: "Republican"
     },
     {
-        key: "dem",
+        key: SegmentKey.Democrat,
         name: "Democrat"
     },
     {
-        key: "other_party",
+        key: SegmentKey.OtherParty,
         name: "Other Party"
     },
     {
-        key: "male",
+        key: SegmentKey.Male,
         name: "Male"
     },
     {
-        key: "female",
+        key: SegmentKey.Female,
         name: "Female"
     },
     {
-        key: "unknown_sex",
+        key: SegmentKey.UnknownSex,
         name: "Unknown Sex"
     },
     {
-        key: "black",
+        key: SegmentKey.Black,
         name: "Black"
     },
     {
-        key: "hispanic",
+        key: SegmentKey.Hispanic,
         name: "Hispanic"
     },
     {
-        key: "white",
+        key: SegmentKey.White,
         name: "White"
     },
     {
-        key: "other_race",
+        key: SegmentKey.OtherRace,
         name: "Other Race"
     },
     {
-        key: "total",
+        key: SegmentKey.Total,
         name: "Total",
         percentage: 100.00,
         ignoreForPercent: true,
         ignoreForTop: true
     },
     {
-        key: "percentage",
+        key: SegmentKey.Percentage,
         name: "%",
         ignoreForCount: true,
         ignoreForPercent: true,

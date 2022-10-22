@@ -9,7 +9,8 @@ export const getSegmentsFromWards = (wards: IWard[]): ISegment[] => {
             name: "Ward",
             ignoreForCount: true,
             ignoreForPercent: true,
-            ignoreForTop: true
+            ignoreForTop: true,
+            ignoreForDropdown: true
         },
         {
             key: "rep",
@@ -63,7 +64,8 @@ export const getSegmentsFromWards = (wards: IWard[]): ISegment[] => {
             name: "%",
             ignoreForCount: true,
             ignoreForPercent: true,
-            ignoreForTop: true
+            ignoreForTop: true,
+            ignoreForDropdown: true
         }
     ]
 

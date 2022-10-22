@@ -67,6 +67,7 @@ export const App = () => {
 					<VoterDataPanel
 						wards={wards}
 						segments={segments}
+						selectedSegment={selectedSegment}
 					/>
 				</div>
 			</div>

@@ -34,6 +34,7 @@ export interface ISegment {
     ignoreForCount?: boolean            // Ignore this segment when counting totals
     ignoreForPercent?: boolean          // Ignore this segment when calculating percentage
     ignoreForTop?: boolean              // Ignore this segment when calculating top segment
+    ignoreForDropdown?: boolean         // Ignore this segment when creating dropdown option
 }
 
 export interface IDropdownOption {

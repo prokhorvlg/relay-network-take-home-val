@@ -16,7 +16,7 @@ enum AppState {
 export const App = () => {
 	// Contains current state of app
 	const [loadingState, setLoadingState] = useState<AppState>(AppState.NotLoaded);
-	const {wards, segments, topSegmentKey, setWards} = useVoterData()
+	const { wards, segments, topSegmentKey, selectedSegment, setWards, setSelectedSegment } = useVoterData()
 
 	// On app load, load the data,
 	useEffect(() => {
@@ -48,16 +48,23 @@ export const App = () => {
 	else if (loadingState === AppState.Loaded) {
 		return (
 			<div className="app-container" data-testid="app-container-loaded">
-				<SummaryPanel 
-					segments={segments}
-					topSegmentKey={topSegmentKey}
-				/>
-				<VoterDataPanel 
-					wards={wards}
-				/>
+				<div className="header">
+					<h1>Voter Statistics</h1><p>by Valentin Sigalov for <em>Relay Network</em></p>
+				</div>
+				<div className="contents">
+					<SummaryPanel
+						segments={segments}
+						topSegmentKey={topSegmentKey}
+						selectedSegment={selectedSegment}
+						setSelectedSegment={setSelectedSegment}
+					/>
+					<VoterDataPanel
+						wards={wards}
+					/>
+				</div>
 			</div>
 		)
-	} 
+	}
 	else if (loadingState === AppState.Error) {
 		return (
 			<div className="app-container" data-testid="app-container-error">

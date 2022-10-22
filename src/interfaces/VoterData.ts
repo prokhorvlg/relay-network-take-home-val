@@ -1,7 +1,7 @@
 // VoterData.ts
 // Contains all interfaces pertaining to voter data.
 
-export interface IGetVoterDataRequest {}
+export interface IGetVoterDataRequest { }
 
 export interface IGetVoterDataResponse {
     rows: IWard[]
@@ -35,4 +35,9 @@ export interface ISegment {
     name: string
     count?: number
     percentage?: number
+}
+
+export interface IDropdownOption {
+    value: string
+    label: string
 }

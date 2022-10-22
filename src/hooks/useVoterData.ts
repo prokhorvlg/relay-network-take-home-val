@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { getSegmentsFromWards, getTopSegmentFromSegments } from "../components/helpers/SegmentHelpers";
-import { ISegment, IWard } from "../interfaces/VoterData";
+import { IDropdownOption, ISegment, IWard } from "../interfaces/VoterData";
 
 // useVoterData.ts
 // Contains hook that handles all data and functionality related to voter data.
@@ -10,6 +10,7 @@ const useVoterData = () => {
     const [wards, setWards] = useState<IWard[]>([])
     const [segments, setSegments] = useState<ISegment[]>([])
     const [topSegmentKey, setTopSegmentKey] = useState<string>()
+    const [selectedSegment, setSelectedSegment] = useState<IDropdownOption>()
 
     // Whenever wards are updated...
     useEffect(() => {
@@ -24,8 +25,10 @@ const useVoterData = () => {
         wards,
         segments,
         topSegmentKey,
+        selectedSegment,
         // actions
-        setWards
+        setWards,
+        setSelectedSegment
     }
 }
 

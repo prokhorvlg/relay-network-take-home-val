@@ -4,6 +4,8 @@
 $font-heading: 'Roboto Slab', serif;
 $font-body: 'Open Sans', sans-serif;
 
+$selected-color: #ffd909;
+
 h1,
 h2,
 h3,
@@ -42,10 +44,13 @@ body,
 
 	.header {
 		height: 90px;
-		margin-left: 30px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
+
+		background-color: $selected-color;
+		border-radius: 10px;
+		margin: 10px;
 
 		h1 {
 			margin: 0;
@@ -62,6 +67,8 @@ body,
 		display: flex;
 		flex-direction: row;
 		height: calc(100% - 90px);
+		max-width: 100%;
+		overflow-x: auto;
 	}
 }
 
@@ -99,11 +106,19 @@ body,
 			margin: 0;
 			padding: 10px;
 			border-radius: 10px;
+			width: 90%;
+			text-align: center;
 		}
 
 		.percent {
 			margin-top: 10px;
 			font-size: 1.5rem;
+		}
+
+		&.selected {
+			h2 {
+				background-color: $selected-color;
+			}
 		}
 	}
 }
@@ -148,7 +163,11 @@ body,
 	}
 
 	.col-element {
-		width: 50px;
+		width: 100px;
+
+		&.selected {
+			background-color: $selected-color;
+		}
 	}
 
 	.voter-data-list {

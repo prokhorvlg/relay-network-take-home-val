@@ -4,12 +4,13 @@ import { formatNumberWithCommas, getSegmentByKey } from "../helpers/SegmentHelpe
 interface SummaryDetailsProps {
     text: string
     segment: ISegment
+    selected: boolean
 }
 
-const SummaryDetails = ({ text, segment }: SummaryDetailsProps) => {
+const SummaryDetails = ({ text, segment, selected }: SummaryDetailsProps) => {
     if (!segment.percentage) return null
     return (
-        <div className="details">
+        <div className={"details " + (selected ? "selected" : "")}>
             <p>{text}</p>
             <h2>{segment.name} - {formatNumberWithCommas(segment.count || 0)}</h2>
             <p className="percent">{segment.percentage.toFixed(2)}%</p>

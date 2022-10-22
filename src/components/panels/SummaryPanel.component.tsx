@@ -24,17 +24,20 @@ const SummaryPanel = ({ segments, topSegmentKey, selectedSegment, setSelectedSeg
 		// Starr formulating a segment details object.
 		let detailsSegment: ISegment
 		let detailsText: string
+		let detailsSelected: boolean
 		// If there is a selected segment, details segment reflects selected
 		if (selectedSegment) {
 			const selectedSegmentObj = getSegmentByKey(selectedSegment.value, segments)
 			if (!selectedSegmentObj || !selectedSegmentObj.percentage) return null
 			detailsSegment = selectedSegmentObj
 			detailsText = "Percentage of all voters that are:"
+			detailsSelected = true
 		}
 		// If there isn't, details segment reflects top segment
 		else {
 			detailsText = "Top segment of all voters:"
 			detailsSegment = topSegment
+			detailsSelected = false
 		}
 
 		return (
@@ -47,6 +50,7 @@ const SummaryPanel = ({ segments, topSegmentKey, selectedSegment, setSelectedSeg
 				<SummaryDetails
 					segment={detailsSegment}
 					text={detailsText}
+					selected={detailsSelected}
 				/>
 			</div>
 		)

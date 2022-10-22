@@ -16,7 +16,6 @@ const useVoterData = () => {
     // Whenever wards are changed...
     useEffect(() => {
         if (wards.length) {
-            console.log("wards changed")
             // Calculate new segment totals and percentages.
             setSegments(getSegmentsFromWards(wards))
             // Calculate top segment. (the segment with the largest total)
@@ -26,7 +25,6 @@ const useVoterData = () => {
 
     // Whenever the selected segment is updated...
     useEffect(() => {
-        console.log("selection changed")
         if (selectedSegment) {
             const selectedKey = selectedSegment.value as keyof IWard || "total"
             // Calculate percentages for each ward

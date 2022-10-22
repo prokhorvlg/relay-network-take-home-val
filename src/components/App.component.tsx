@@ -21,7 +21,6 @@ export const App = () => {
 	// On app start, load the data from endpoint.
 	useEffect(() => {
 		fetchWardsFromEndpoint().then((appState: AppState) => {
-			console.log(appState)
 			setLoadingState(appState)
 		})
 	}, [])

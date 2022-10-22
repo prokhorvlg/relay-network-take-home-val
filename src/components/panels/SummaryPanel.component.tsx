@@ -1,6 +1,7 @@
 import { IDropdownOption, ISegment } from "../../interfaces/VoterData";
 import { getSegmentByKey } from "../helpers/SegmentHelpers";
 import SegmentDropdown from "./SegmentDropdown.component";
+import SummaryDetails from "./SummaryDetails.component";
 
 interface SummaryPanelProps {
 	segments: ISegment[]
@@ -19,20 +20,34 @@ const SummaryPanel = ({ segments, topSegmentKey, selectedSegment, setSelectedSeg
 	// If something about the top segment is wrong, stop display.
 	if (!isTopSegmentCalculated || !topSegment.percentage) return null
 	else {
+
+		// Starr formulating a segment details object.
+		let detailsSegment: ISegment
+		let detailsText: string
+		// If there is a selected segment, details segment reflects selected
+		if (selectedSegment) {
+			const selectedSegmentObj = getSegmentByKey(selectedSegment.value, segments)
+			if (!selectedSegmentObj || !selectedSegmentObj.percentage) return null
+			detailsSegment = selectedSegmentObj
+			detailsText = "Percentage of all voters that are:"
+		}
+		// If there isn't, details segment reflects top segment
+		else {
+			detailsText = "Top segment of all voters:"
+			detailsSegment = topSegment
+		}
+
 		return (
 			<div className="summary-panel" data-testid="summary-panel">
-				<div className="dropdown">
-					<SegmentDropdown
-						segments={segments}
-						selectedSegment={selectedSegment}
-						setSelectedSegment={setSelectedSegment}
-					/>
-				</div>
-				<div className="details">
-					<p>Top Segment of All Voters</p>
-					<h2>{topSegment.name} - {topSegment.count}</h2>
-					<p>{isTopSegmentCalculated ? topSegment.percentage.toFixed(2) : "0.00"}%</p>
-				</div>
+				<SegmentDropdown
+					segments={segments}
+					selectedSegment={selectedSegment}
+					setSelectedSegment={setSelectedSegment}
+				/>
+				<SummaryDetails
+					segment={detailsSegment}
+					text={detailsText}
+				/>
 			</div>
 		)
 	}

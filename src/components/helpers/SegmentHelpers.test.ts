@@ -16,11 +16,12 @@ describe('getSegmentsFromWards', () => {
 			expect(totalSegment.count).toBe(15)
 		}
 	})
-	test('returns an expected percentage', () => {
+	test('returns an expected count and percentage', () => {
 		const repSegment = getSegmentByKey("rep", segments)
 		expect(repSegment).toBeDefined()
 		if (repSegment) {
 			// In the mock data, republican segment is this value.
+			expect(repSegment.count).toBe(4)
 			expect(repSegment.percentage?.toFixed(2)).toBe("26.67")
 		}
 	})

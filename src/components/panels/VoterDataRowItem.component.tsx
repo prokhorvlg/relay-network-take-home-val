@@ -20,7 +20,7 @@ const VoterDataRowItem = ({ ward }: VoterDataRowItemProps) => {
             <VoterDataColumnItem text={ward.white} />
             <VoterDataColumnItem text={ward.other_race} />
             <VoterDataColumnItem text={ward.total} />
-            <VoterDataColumnItem text="-" />
+            <VoterDataColumnItem text={ward.percentage ? ward.percentage.toFixed(2) + "%" : "-"} />
         </div>
     )
 }

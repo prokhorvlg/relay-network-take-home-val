@@ -24,7 +24,7 @@ const SegmentDropdown = ({ segments, selectedSegment, setSelectedSegment }: Segm
 	}
 
 	return (
-		<div data-testid="segment-dropdown">
+		<div className="dropdown" data-testid="segment-dropdown">
 			<Select<IDropdownOption>
 				defaultValue={selectedSegment}
 				onChange={handleSelectChange}

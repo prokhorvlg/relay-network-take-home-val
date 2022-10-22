@@ -86,12 +86,24 @@ body,
 		justify-content: center;
 		align-items: center;
 		margin-bottom: 80px;
-
 		flex: 1;
+		width: 300px;
 
-		p,
-		h2 {
+		p {
 			color: white;
+		}
+
+		h2 {
+			display: block;
+			background-color: white;
+			margin: 0;
+			padding: 10px;
+			border-radius: 10px;
+		}
+
+		.percent {
+			margin-top: 10px;
+			font-size: 1.5rem;
 		}
 	}
 }

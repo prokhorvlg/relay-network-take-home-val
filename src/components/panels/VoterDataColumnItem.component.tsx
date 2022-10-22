@@ -1,3 +1,5 @@
+import { formatNumberWithCommas } from "../helpers/SegmentHelpers"
+
 interface VoterDataColumnItemProps {
     text: string | number
 }
@@ -5,7 +7,7 @@ interface VoterDataColumnItemProps {
 const VoterDataColumnItem = ({ text }: VoterDataColumnItemProps) => {
     return (
         <div className="col-element">
-            <p>{text}</p>
+            <p>{typeof text !== 'string' ? formatNumberWithCommas(text) : text}</p>
         </div>
     )
 }

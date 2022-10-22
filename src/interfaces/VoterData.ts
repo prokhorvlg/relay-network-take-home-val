@@ -27,6 +27,7 @@ export interface IWard {
     male: number
     female: number
     unknown_sex: number
+    percentage?: number
 }
 
 

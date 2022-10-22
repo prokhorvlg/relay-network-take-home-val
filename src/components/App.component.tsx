@@ -7,7 +7,7 @@ import VoterDataPanel from "./panels/VoterDataPanel.component";
 export const VOTER_DATA_ENDPOINT_URL: string =
 	"https://phl.carto.com/api/v2/sql?q=SELECT+*+FROM+qualified_voter_listing_2018_primary_by_ward&filename=qualified_voter_listing_2018_primary_by_ward&format=json&skipfields=cartodb_id"
 
-enum AppState {
+export enum AppState {
 	NotLoaded,
 	Loaded,
 	Error
@@ -18,7 +18,7 @@ export const App = () => {
 	const [loadingState, setLoadingState] = useState<AppState>(AppState.NotLoaded);
 	const { wards, segments, topSegmentKey, selectedSegment, setWards, setSelectedSegment } = useVoterData()
 
-	// On app load, load the data,
+	// On app load, load the data.
 	useEffect(() => {
 		fetch(VOTER_DATA_ENDPOINT_URL)
 			.then(response => {

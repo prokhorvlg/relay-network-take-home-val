@@ -51,7 +51,7 @@ Before starting, clone the repository using `git clone https://github.com/prokho
 5. The Jest test results should appear in your console after running.
 
 ## Future ideas
-* Highlight the column that is currently selected.
+* Replace the string keys used for segments with an enum for consistency (important!)
 * Allow user to filter by column by simply selecting the column itself.
 * Responsive design, so the table can be usable on a mobile device.
 

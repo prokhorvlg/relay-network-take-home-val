@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
+import { AppState, VOTER_DATA_ENDPOINT_URL } from "../components/App.component";
 import { getSegmentsFromWards, getTopSegmentFromSegments } from "../components/helpers/SegmentHelpers";
-import { IDropdownOption, ISegment, IWard } from "../interfaces/VoterData";
+import { IDropdownOption, IGetVoterDataResponse, ISegment, IWard } from "../interfaces/VoterData";
 
 // useVoterData.ts
 // Contains hook that handles all data and functionality related to voter data.
@@ -49,6 +50,31 @@ const useVoterData = () => {
         }
     }, [selectedSegment])
 
+    // Fetches wards data from endpoint and populates state.
+    // In a fully-fledged app, this would likely be an action (and reducer).
+    const fetchWardsFromEndpoint = async (): Promise<AppState> => {
+        return await fetch(VOTER_DATA_ENDPOINT_URL)
+            .then(response => {
+                return response.json()
+            })
+            .then(
+                (result: IGetVoterDataResponse) => {
+                    // Filter out the "totals" row. (explained in readme's 'mistakes' section)
+                    const rows = result.rows.filter((row) => {
+                        return row.ward !== "Totals:"
+                    })
+
+                    // Set the state.
+                    setWards(rows)
+                    return Promise.resolve(AppState.Loaded)
+                },
+                (error) => {
+                    // If an error has occured...
+                    return Promise.resolve(AppState.Error)
+                }
+            )
+    }
+
     return {
         // store
         wards,
@@ -56,8 +82,8 @@ const useVoterData = () => {
         topSegmentKey,
         selectedSegment,
         // actions
-        setWards,
-        setSelectedSegment
+        setSelectedSegment,
+        fetchWardsFromEndpoint
     }
 }
 

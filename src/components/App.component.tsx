@@ -16,32 +16,14 @@ export enum AppState {
 export const App = () => {
 	// Contains current state of app
 	const [loadingState, setLoadingState] = useState<AppState>(AppState.NotLoaded);
-	const { wards, segments, topSegmentKey, selectedSegment, setWards, setSelectedSegment } = useVoterData()
+	const { wards, segments, topSegmentKey, selectedSegment, setSelectedSegment, fetchWardsFromEndpoint } = useVoterData()
 
-	// On app load, load the data.
+	// On app start, load the data from endpoint.
 	useEffect(() => {
-		fetch(VOTER_DATA_ENDPOINT_URL)
-			.then(response => {
-				return response.json()
-			})
-			.then(
-				(result: IGetVoterDataResponse) => {
-					// In a fully-fledged app, this would likely be done by an action in a store like Redux.
-
-					// Filter out the "totals" row. (explained in readme's 'mistakes' section)
-					const rows = result.rows.filter((row) => {
-						return row.ward !== "Totals:"
-					})
-
-					// Set the state.
-					setWards(rows)
-					setLoadingState(AppState.Loaded)
-				},
-				(error) => {
-					// If an error has occured...
-					setLoadingState(AppState.Error)
-				}
-			)
+		fetchWardsFromEndpoint().then((appState: AppState) => {
+			console.log(appState)
+			setLoadingState(appState)
+		})
 	}, [])
 
 	if (loadingState === AppState.NotLoaded) {

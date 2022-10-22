@@ -6,8 +6,8 @@ interface VoterDataRowItemProps {
 }
 
 const VoterDataRowItem = ({ ward }: VoterDataRowItemProps) => {
-	return (
-		<div className="voter-data-row-item">
+    return (
+        <div className="voter-data-row-item">
             <VoterDataColumnItem text={ward.ward} />
             <VoterDataColumnItem text={ward.rep} />
             <VoterDataColumnItem text={ward.dem} />
@@ -20,9 +20,9 @@ const VoterDataRowItem = ({ ward }: VoterDataRowItemProps) => {
             <VoterDataColumnItem text={ward.white} />
             <VoterDataColumnItem text={ward.other_race} />
             <VoterDataColumnItem text={ward.total} />
-            <VoterDataColumnItem text="%" />
-		</div>
-	)
+            <VoterDataColumnItem text={ward.percentage ? ward.percentage.toFixed(2) + "%" : "-"} selected={ward.percentage ? true : false} />
+        </div>
+    )
 }
 
 export default VoterDataRowItem

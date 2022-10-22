@@ -4,6 +4,8 @@
 $font-heading: 'Roboto Slab', serif;
 $font-body: 'Open Sans', sans-serif;
 
+$selected-color: #ffd909;
+
 h1,
 h2,
 h3,
@@ -27,30 +29,104 @@ a {
 html,
 body,
 #root {
-	height: 100%;
-	overflow: hidden;
-}
-
-body {
 	margin: 0;
+	height: 100%;
 	overflow: hidden;
 }
 
 .app-container {
 	display: flex;
-	flex-direction: row;
+	flex-direction: column;
+
+	height: 100%;
+	max-height: 100%;
 	width: 100%;
 
+	.header {
+		height: 90px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		background-color: $selected-color;
+		border-radius: 10px;
+		margin: 10px;
+
+		h1 {
+			margin: 0;
+			font-size: 1.7rem;
+			font-weight: 600;
+		}
+
+		p {
+			margin: 5px 0 0 50px;
+		}
+	}
+
+	.contents {
+		display: flex;
+		flex-direction: row;
+		height: calc(100% - 90px);
+		max-width: 100%;
+		overflow-x: auto;
+	}
 }
 
 .summary-panel {
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
-	align-items: center;
+	padding: 30px 30px 30px 30px;
+	margin: 0 10px 10px 10px;
 
-	height: 100vh;
-	padding: 0 50px 0 50px;
+	background-color: rgba(0, 0, 0, 0.9);
+	border-radius: 10px;
+
+	.dropdown {
+		width: 100%;
+		font-family: $font-body;
+		font-weight: 600;
+	}
+
+	.details {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		flex: 1;
+		width: 300px;
+
+		p {
+			color: white;
+		}
+
+		h2 {
+			display: block;
+			background-color: white;
+			margin: 0;
+			padding: 10px;
+			border-radius: 10px;
+			width: 90%;
+			text-align: center;
+		}
+
+		.percent {
+			margin-top: 10px;
+			font-size: 1.5rem;
+		}
+
+		&.selected {
+			h2 {
+				background-color: $selected-color;
+			}
+		}
+	}
+
+	.footer {
+		width: 100%;
+		text-align: center;
+		height: 50px;
+		color: $selected-color;
+	}
 }
 
 .voter-data-panel {
@@ -58,8 +134,7 @@ body {
 	flex-direction: column;
 	justify-content: space-between;
 	flex: 1;
-	height: 100vh;
-	margin: 10px 10px 10px 0;
+	margin: 0px 10px 10px 0;
 
 	.voter-data-headers,
 	.voter-data-row-item {
@@ -68,6 +143,7 @@ body {
 		justify-content: space-between;
 		padding-left: 10px;
 		padding-right: 10px;
+
 		div {
 			display: flex;
 			justify-content: center;
@@ -77,9 +153,10 @@ body {
 	}
 
 	.voter-data-headers {
-		background-color: rgba(0,0,0,0.9);
+		background-color: rgba(0, 0, 0, 0.9);
 		border-radius: 10px;
 		margin-right: 20px;
+
 		h3 {
 			color: white;
 			font-size: 1rem;
@@ -92,14 +169,17 @@ body {
 	}
 
 	.col-element {
-		width: 50px;
+		width: 100px;
+
+		&.selected {
+			background-color: $selected-color;
+		}
 	}
 
 	.voter-data-list {
 		display: flex;
 		flex-direction: column;
-		max-height: 100%;
 		overflow-y: scroll;
-		margin-bottom: 20px;
+		max-height: 100%;
 	}
 }

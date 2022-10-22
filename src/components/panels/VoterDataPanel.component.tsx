@@ -11,23 +11,20 @@ const VoterDataPanel = ({ wards }: VoterDataPanelProps) => {
 	return (
 		<div className="voter-data-panel">
 			<div className="voter-data-headers">
-				{VoterDataHeaders.map((headerData: IVoterDataHeader) => 
-					<VoterDataHeaderItem 
+				{VoterDataHeaders.map((headerData: IVoterDataHeader) =>
+					<VoterDataHeaderItem
 						key={headerData.text}
 						text={headerData.text}
 					/>
 				)}
 			</div>
 			<div className="voter-data-list">
-				{wards.map((ward: IWard) => 
-					<VoterDataRowItem 
+				{wards.map((ward: IWard) =>
+					<VoterDataRowItem
 						key={ward.ward}
 						ward={ward}
 					/>
 				)}
-			</div>
-			<div className="voter-data-footer">
-
 			</div>
 		</div>
 	)

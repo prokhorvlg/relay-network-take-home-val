@@ -64,7 +64,7 @@ export const getSegmentsFromWards = (wards: IWard[]): ISegment[] => {
             }
         })
     })
-    
+
     // PERCENTAGES
     const totalSegment = getSegmentByKey("total", segments)
     // Calculate percentages based on relation to total segment count
@@ -105,4 +105,8 @@ export const getTopSegmentFromSegments = (segments: ISegment[]): string => {
         }
     })
     return currentTopSegment
+}
+
+export const formatNumberWithCommas = (number: number | string) => {
+    return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 }

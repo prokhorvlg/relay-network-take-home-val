@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import App, { AppState } from "../components/App.component";
-import { getSegmentByKey, getSegmentsFromWards, getTopSegmentFromSegments } from "../components/helpers/SegmentHelpers";
+import { getSegmentsFromWards, getTopSegmentFromSegments } from "../components/helpers/SegmentHelpers";
 import { IDropdownOption, ISegment, IWard } from "../interfaces/VoterData";
 
 // useVoterData.ts

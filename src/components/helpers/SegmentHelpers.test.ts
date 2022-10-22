@@ -1,6 +1,6 @@
 import { mockWards } from "../../data/WardsMockData";
 import { ISegment } from "../../interfaces/VoterData";
-import { getSegmentByKey, getSegmentsFromWards, getTopSegmentFromSegments } from "./SegmentHelpers";
+import { formatNumberWithCommas, getSegmentByKey, getSegmentsFromWards, getTopSegmentFromSegments } from "./SegmentHelpers";
 
 describe('getSegmentsFromWards', () => {
 	let segments: ISegment[], totalSegment: ISegment | undefined
@@ -56,5 +56,12 @@ describe('getTopSegmentFromSegments', () => {
 			// In the mock data, male has the highest total count.
 			expect(topSegment).toStrictEqual("male")
 		}
+	})
+})
+
+describe('formatNumberWithCommas', () => {
+	test('returns an expected formatted value', () => {
+		const formattedValue = formatNumberWithCommas(1234567)
+		expect(formattedValue).toBe("1,234,567")
 	})
 })

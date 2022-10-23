@@ -1,5 +1,5 @@
-# voter statistics
-`voter statistics` is a simple React-based web application that displays a table of voter statistics from a provided endpoint.
+# voter statistics (relay-network-take-home-val)
+`voter statistics (relay-network-take-home-val)` is a simple React-based web application that displays a table of voter statistics from a provided endpoint.
 
 Created by [prokhorvlg (Valentin Sigalov)](https://github.com/prokhorvlg).
 

@@ -11,8 +11,8 @@ describe('SegmentDropdown', () => {
     beforeAll(() => {
         segments = getSegmentsFromWards(mockWards)
         selectedSegment = {
-            value: segments[0].key,
-            label: segments[0].name
+            value: segments[1].key,
+            label: segments[1].name
         }
     })
 
@@ -23,7 +23,7 @@ describe('SegmentDropdown', () => {
             setSelectedSegment={setSelectedSegment}
         />)
 
-        expect(screen.getByTestId("segment-dropdown")).toHaveTextContent("Republican")
+        expect(screen.getByText('Republican')).toBeInTheDocument()
     })
     test('displays nothing if setSelectedSegment is undefined', () => {
         render(<SegmentDropdown

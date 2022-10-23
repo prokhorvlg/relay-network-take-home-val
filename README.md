@@ -22,6 +22,7 @@ You can also view the [GitHub commit log](https://github.com/prokhorvlg/relay-ne
 * **TypeScript** - interfaces, types
 * **Jest**, **React Testing Library** - user-experience-oriented unit testing
 * **SCSS** - CSS preprocessor
+* **React Dropdown Select** - external component used in place of a vanilla dropdown
 
 ## Features
 

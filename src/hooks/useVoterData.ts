@@ -58,14 +58,14 @@ const useVoterData = () => {
                 return response.json()
             })
             .then(
-                (result: IGetVoterDataResponse) => {
+                async (result: IGetVoterDataResponse) => {
                     // Filter out the "totals" row. (explained in readme's 'mistakes' section)
                     const rows = result.rows.filter((row) => {
                         return row.ward !== "Totals:"
                     })
 
                     // Set the state.
-                    setWards(rows)
+                    await setWards(rows)
                     return Promise.resolve(AppState.Loaded)
                 },
                 (error) => {

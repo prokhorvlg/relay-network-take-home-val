@@ -16,7 +16,7 @@ describe('App', () => {
 	})
 	test('displays loaded container after successful fetch request', async () => {
 		await act(async () => {
-			render(<App />);
+			await render(<App />)
 		})
 
 		await waitFor(() => {
@@ -25,13 +25,13 @@ describe('App', () => {
 	})
 	test('displays correct data in window after successful fetch request', async () => {
 		await act(async () => {
-			render(<App />);
+			await render(<App />)
 		})
 
 		await waitFor(() => {
 			expect(screen.getByTestId("app-container-loaded")).toBeInTheDocument()
 			expect(screen.getByText('WD02')).toBeInTheDocument()
-			expect(screen.getByText('10')).toBeInTheDocument()
+			expect(screen.getAllByText('10')[0]).toBeInTheDocument()
 		})
 	})
 })

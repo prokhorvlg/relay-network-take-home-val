@@ -18,9 +18,8 @@ const SummaryPanel = ({ segments, topSegmentKey, selectedSegment, setSelectedSeg
 	const isTopSegmentCalculated = topSegment !== undefined
 
 	// If something about the top segment is wrong, stop display.
-	if (!isTopSegmentCalculated || !topSegment.percentage) return null
+	if (!isTopSegmentCalculated || !topSegment.percentage) return null;
 	else {
-
 		// Starr formulating a segment details object.
 		let detailsSegment: ISegment
 		let detailsText: string

@@ -11,7 +11,9 @@ const SegmentDropdown = ({ segments, selectedSegment, setSelectedSegment }: Segm
 	if (!setSelectedSegment) return null
 
 	// Generate dropdown options from provided segments.
-	const dropdownOptions: IDropdownOption[] = segments.map((segment) => {
+	const dropdownOptions: IDropdownOption[] = segments.filter((segment) => {
+		return !segment.ignoreForDropdown
+	}).map((segment) => {
 		return {
 			value: segment.key,
 			label: segment.name

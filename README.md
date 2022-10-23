@@ -1,46 +1,67 @@
-# Getting Started with Create React App
+# voter statistics
+`voter statistics` is a simple React-based web application that displays a table of voter statistics from a provided endpoint.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Created by [prokhorvlg (Valentin Sigalov)](https://github.com/prokhorvlg).
 
-## Available Scripts
+## Contents
 
-In the project directory, you can run:
+This repository contains the project:
+* **React app**: The full React-based front-end can be found within the 'app' folder.
 
-### `npm start`
+## History
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+To view the git commit history for this repository, use the command `git log`.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+For a minified version, use `git log --pretty="%h - %s"`.
 
-### `npm test`
+You can also view the [GitHub commit log](https://github.com/prokhorvlg/relay-network-take-home-val/commits/main).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies
 
-### `npm run build`
+* **React** - JavaScript framework, React hooks, functional components
+* **TypeScript** - interfaces, types
+* **Jest**, **React Testing Library** - user-experience-oriented unit testing
+* **SCSS** - CSS preprocessor
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Features
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+* **Loads and displays data** from the provided endpoint using a fetch request and displays it as a list
+* **Aggregates data** into segments with calculated percentages
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## How to Set Up and Run
 
-### `npm run eject`
+Before starting, clone the repository using `git clone https://github.com/prokhorvlg/relay-network-take-home-val.git`.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+### React App
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### Run the App
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+1. Open terminal on this folder.
+2. Run `cd app` to open the client app folder.
+3. Run `npm install`.
+4. Run `npm start`.
+5. Visit `localhost:3000` if the app does not automatically open in browser.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+#### Run the Unit Tests
 
-## Learn More
+1. Open terminal on this folder.
+2. Run `cd app` to open the client app folder.
+3. Run `npm install`.
+4. Run `npm test`.
+5. The Jest test results should appear in your console after running.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Future ideas
+* Allow user to filter by column by simply selecting the column itself.
+* Responsive design, so the table can be usable on a mobile device.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+# Mistakes
+
+When designing the app initially, I did not notice the totals row provided with the data, so I implemented the total calculations myself. 
+
+In my opinion, this was caused primarily by these issues:
+
+* The lack of an interface provided with the endpoint.
+* The endpoint's design is unconventional. From my experience, special pieces of information are often provided seperately within the interface.
+* I did not examine each row carefully enough.
+
+Ultimately, I decided to stick with my logic as I felt confident with it and did not want to spend time refactoring. Instead, I simply filtered out the totals row.

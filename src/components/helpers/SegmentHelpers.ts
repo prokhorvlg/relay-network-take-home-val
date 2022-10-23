@@ -1,66 +1,23 @@
+import { baseSegments } from "../../data/BaseSegments";
 import { ISegment, IWard } from "../../interfaces/VoterData";
 
 // Given wards, return new segments by aggregating ward data.
 export const getSegmentsFromWards = (wards: IWard[]): ISegment[] => {
     // Create dictionary to contain data.
-    let segments: ISegment[] = [
-        {
-            key: "rep",
-            name: "Republican"
-        },
-        {
-            key: "dem",
-            name: "Democrat"
-        },
-        {
-            key: "other_party",
-            name: "Other Party"
-        },
-        {
-            key: "male",
-            name: "Male"
-        },
-        {
-            key: "female",
-            name: "Female"
-        },
-        {
-            key: "unknown_sex",
-            name: "Unknown Sex"
-        },
-        {
-            key: "black",
-            name: "Black"
-        },
-        {
-            key: "hispanic",
-            name: "Hispanic"
-        },
-        {
-            key: "white",
-            name: "White"
-        },
-        {
-            key: "other_race",
-            name: "Other Race"
-        },
-        {
-            key: "total",
-            name: "Total",
-            percentage: 100.00
-        }
-    ]
+    let segments: ISegment[] = baseSegments
 
     // TOTAL COUNTS
     // Cycle through each ward and aggregate the total counts for each segment.
     wards.forEach((ward) => {
         segments.forEach((segment) => {
-            const wardValue = ward[segment.key as keyof IWard] as number
-            // Add to the total count for that segment
-            if (segment.count) {
-                segment.count = segment.count + wardValue
-            } else {
-                segment.count = wardValue
+            if (!segment.ignoreForCount) {
+                const wardValue = ward[segment.key] as number
+                // Add to the total count for that segment
+                if (segment.count) {
+                    segment.count = segment.count + wardValue
+                } else {
+                    segment.count = wardValue
+                }
             }
         })
     })
@@ -70,7 +27,7 @@ export const getSegmentsFromWards = (wards: IWard[]): ISegment[] => {
     // Calculate percentages based on relation to total segment count
     if (totalSegment) {
         segments.forEach((segment) => {
-            if (segment.count && totalSegment.count) {
+            if (!segment.ignoreForPercent && segment.count && totalSegment.count) {
                 segment.percentage = (segment.count / totalSegment.count) * 100
             }
         })
@@ -90,7 +47,7 @@ export const getTopSegmentFromSegments = (segments: ISegment[]): string => {
     let currentTopCount = -1
     // For each segment, oust the top if its count is higher
     segments.forEach((segment) => {
-        if (segment.count && segment.key !== "total") {
+        if (!segment.ignoreForTop && segment.count) {
             if (currentTopSegment === "") {
                 // If this just started, set this as the top segment
                 currentTopSegment = segment.key
@@ -107,6 +64,7 @@ export const getTopSegmentFromSegments = (segments: ISegment[]): string => {
     return currentTopSegment
 }
 
+// Given a number, returns a formatted version with commas.
 export const formatNumberWithCommas = (number: number | string) => {
     return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")
 }

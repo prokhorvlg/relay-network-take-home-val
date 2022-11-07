@@ -1,5 +1,5 @@
 {
-  "name": "relay-network-take-home-val",
+  "name": "voter-statistics",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -22,7 +22,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "jest",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "docker-build": "docker build . -t dockerized-voter-statistics && docker run -p 3000:3000 -d dockerized-voter-statistics"
   },
   "eslintConfig": {
     "extends": [

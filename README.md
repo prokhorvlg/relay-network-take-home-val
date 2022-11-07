@@ -23,6 +23,7 @@ You can also view the [GitHub commit log](https://github.com/prokhorvlg/voter-st
 * **Jest**, **React Testing Library** - user-experience-oriented unit testing
 * **SCSS** - CSS preprocessor
 * **React Dropdown Select** - external component used in place of a vanilla dropdown
+* **Docker** - containerized front end application for use in CI/CD pipeline
 
 ## Features
 
@@ -48,6 +49,12 @@ Before starting, clone the repository using `git clone https://github.com/prokho
 2. Run `npm install`.
 3. Run `npm test`.
 4. The Jest test results should appear in your console after running.
+
+#### Run on Docker
+
+1. Open terminal on this folder.
+2. Run `npm docker-build`.
+3. Visit `localhost:3000` if the app does not automatically open in browser.
 
 ## Future ideas
 * Allow user to filter by column by simply selecting the column itself.

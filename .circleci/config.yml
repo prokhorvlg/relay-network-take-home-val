@@ -7,7 +7,7 @@ jobs:
     docker:
      - image: cimg/base:stable
     steps:
-      - run: sh docker build -t dockerized-voter-statistics .
+      - run: sudo docker build -t dockerized-voter-statistics .
 
 workflows:
   deploy_app:

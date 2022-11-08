@@ -1,16 +1,19 @@
 # CircleCI configuration file
 version: 2.1
 
+orbs:
+  docker: circleci/docker@2.1.4
+
 jobs:
-  build:
-    working_directory: /app
+  example-job:
     docker:
-     - image: cimg/base:stable
+      # replace with your preferred image
+      - image: cimg/base:stable
     steps:
-      - run: sudo usermod -aG docker $USER
-      - run: sudo docker build -t dockerized-voter-statistics .
+      - docker/build:
+          image: dockerized-voter-statistics 
 
 workflows:
-  deploy_app:
+  example-workflow:
     jobs:
-      - build
+      - example-job

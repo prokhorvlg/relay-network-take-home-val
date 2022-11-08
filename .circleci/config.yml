@@ -7,7 +7,7 @@ jobs:
     docker:
      - image: cimg/base:stable
     steps:
-      - run: sudo docker build -t dockerized-voter-statistics .
+      - run: sudo circleci build
 
 workflows:
   deploy_app:

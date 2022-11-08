@@ -11,7 +11,8 @@ jobs:
       - image: cimg/base:stable
     steps:
       - docker/build:
-          image: dockerized-voter-statistics 
+          image: dockerized-voter-statistics
+          path: .
 
 workflows:
   example-workflow:

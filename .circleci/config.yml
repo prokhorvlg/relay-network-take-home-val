@@ -13,7 +13,7 @@ jobs:
       - run: ls
       - docker/build:
           image: dockerized-voter-statistics
-          path: .
+          path: ./voter-statistics
 
 workflows:
   example-workflow:

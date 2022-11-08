@@ -10,7 +10,7 @@ jobs:
       # replace with your preferred image
       - image: cimg/base:stable
     steps:
-      - run: cd .
+      - run: ls
       - docker/build:
           image: dockerized-voter-statistics
           path: .
